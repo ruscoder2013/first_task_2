@@ -45,6 +45,7 @@ add_executable(
 # Test target
 add_executable(
         test_list
+        src/filter.h src/filter.cpp
         test/test_list.cpp
 )
 

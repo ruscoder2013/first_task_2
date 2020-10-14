@@ -44,7 +44,7 @@ std::vector<int> split_to_int(const std::string &str, char d)
         while (stop != std::string::npos) {
             auto ip_part = stoi(str.substr(start, stop - start));
             if ((ip_part < 0) || (ip_part > 255))
-                std::cout << "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" << std::endl;
+                return {};
             r.push_back(ip_part);
 
             start = stop + 1;
@@ -52,14 +52,16 @@ std::vector<int> split_to_int(const std::string &str, char d)
         }
         auto ip_part = stoi(str.substr(start));
         if ((ip_part < 0) || (ip_part > 255))
-            std::cout << "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" << std::endl;
+            return {};
         r.push_back(ip_part);
     }
     catch (const std::invalid_argument& ia) {
         return {};
     }
-
-    return r;
+    if (r.size() == 4)
+        return r;
+    else
+        return {};
 }
 
 void print_ip(std::vector<std::vector<int>> ip_pool) {
@@ -70,7 +72,6 @@ void print_ip(std::vector<std::vector<int>> ip_pool) {
             if (ip_part != ip->cbegin())
             {
                 std::cout << ".";
-
             }
             std::cout << *ip_part;
         }
@@ -89,16 +90,18 @@ int main(int argc, char const *argv[])
 
         for(std::string line; std::getline(std::cin, line);) {
             std::vector<std::string> v = split(line, '\t');
-            ip_pool.push_back(split_to_int(v.at(0), '.'));
+
+                auto ip_addr = split_to_int(v.at(0), '.');
+                if (!ip_addr.empty())
+                    ip_pool.push_back(ip_addr);
         }
 
-        std::sort(ip_pool.begin(), ip_pool.end(),
-             [](auto a, auto b) -> bool
-             {
-                 return a > b;
-             });
-
         // TODO reverse lexicographically sort
+        std::sort(ip_pool.begin(), ip_pool.end(),
+                  [](auto a, auto b) -> bool
+                  {
+                      return a > b;
+                  });
 
         print_ip(ip_pool);
 
