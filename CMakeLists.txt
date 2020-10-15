@@ -44,8 +44,8 @@ add_executable(
 
 set_target_properties(
         filter PROPERTIES
-        CXX_STANDART 14
-        CXX_STANDART_REQUIRED ON
+        CXX_STANDARD 14
+        CXX_STANDARD_REQUIRED ON
 )
 
 # Test target
@@ -57,8 +57,8 @@ add_executable(
 
 set_target_properties(
         test_list PROPERTIES
-        CXX_STANDART 14
-        CXX_STANDART_REQUIRED ON
+        CXX_STANDARD 14
+        CXX_STANDARD_REQUIRED ON
 )
 
 # Add src to the include directories for the test target
