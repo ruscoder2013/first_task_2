@@ -42,11 +42,23 @@ add_executable(
         src/main.cpp
         src/filter.h src/filter.cpp)
 
+set_target_properties(
+        filter PROPERTIES
+        CXX_STANDART 14
+        CXX_STANDART_REQUIRED ON
+)
+
 # Test target
 add_executable(
         test_list
         src/filter.h src/filter.cpp
         test/test_list.cpp
+)
+
+set_target_properties(
+        test_list PROPERTIES
+        CXX_STANDART 14
+        CXX_STANDART_REQUIRED ON
 )
 
 # Add src to the include directories for the test target
