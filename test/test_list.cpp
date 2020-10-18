@@ -29,7 +29,7 @@ TEST(Filter_46_70, True) {
     ip_pool.push_back(vec_2);
     auto ip = filter(ip_pool, 46, 70);
     ASSERT_TRUE(ip.size() == 1);
-    ASSERT_TRUE(std::find(ip.begin(), ip.end(), vec_1) != ip.end());
+    ASSERT_TRUE(std::find(ip.begin(), ip.end(), vec_1) == ip.end()); // error test
     ASSERT_TRUE(std::find(ip.begin(), ip.end(), vec_2) == ip.end());
 }
 
