@@ -35,6 +35,7 @@ if (CMAKE_VERSION VERSION_LESS 2.8.11)
     include_directories("${gtest_SOURCE_DIR}/include")
 endif()
 
+enable_testing()
 
 # Main target
 add_executable(
@@ -93,6 +94,4 @@ else ()
     )
 endif()
 
-add_custom_command(TARGET test_list
-                   COMMENT "Run tests"
-)
+add_test( test_list test_list )
