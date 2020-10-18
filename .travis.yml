@@ -10,4 +10,4 @@ script:
 - cd build
 - cmake ..
 - cmake --build .
-- cmake --build . --target test_list
+- ctest
