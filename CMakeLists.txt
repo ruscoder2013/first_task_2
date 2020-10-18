@@ -92,3 +92,7 @@ else ()
             -Wall -Wextra -pedantic -Werror
     )
 endif()
+
+add_custom_command(TARGET test_list
+                   COMMENT "Run tests"
+)
