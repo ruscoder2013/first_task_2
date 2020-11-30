@@ -11,6 +11,7 @@ script:
 - cmake ..
 - cmake --build .
 - ctest
+- cmake --build . --target package
 
 
 deploy:
